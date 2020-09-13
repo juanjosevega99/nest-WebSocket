@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="v-app">
+    <h1>{{ title}}</h1>
+      <form action="">
+        <input v-model="text" type="text">
+        <button>Send</button>
+        <p>
+          <ul>
+            <li v-for="msg of messages">{{ msg }}</li>
+          </ul>
+        </p>
+      </form>
+  </div>
+  <script>
+    var app = new Vue({
+      el: '#v-app',
+      data: {
+        title: 'Websocket Tester',
+        text: '',
+        message: ['Some message', 'Another message']
+      },
+      methods: {}
+    });
+  </script>
+</body>
+</html>
