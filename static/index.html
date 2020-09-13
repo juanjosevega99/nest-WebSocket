@@ -11,7 +11,7 @@
     <h1>{{ title}}</h1>
       <form action="">
         <input v-model="text" type="text">
-        <button>Send</button>
+        <button type="submit" @click.prevent="sendMessage()">Send</button>
         <p>
           <ul>
             <li v-for="msg of messages">{{ msg }}</li>
@@ -25,9 +25,14 @@
       data: {
         title: 'Websocket Tester',
         text: '',
-        message: ['Some message', 'Another message']
+        messages: ['Some message', 'Another message']
       },
-      methods: {}
+      methods: {
+        sendMessage() {
+          this.messages.push(this.text)
+          this.text = '';
+        }
+      }
     });
   </script>
 </body>
