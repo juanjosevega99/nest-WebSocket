@@ -31,18 +31,19 @@
       },
       methods: {
         sendMessage() {
-          this.messages.push(this.text)
+          console.log(`send: ${this.text}`)
+          this.socket.emit('msgToServer', this.text)
           this.text = '';
         },
         receiveMessage(msg) {
           console.log(`recv: ${msg}`)
-          this.messages.push(this.text)
+          this.messages.push(msg)
         },
       },
       created() {
         this.socket = io('http://localhost:3000')
-        this.socket = io('msgToClient', (msg) => {
-          this.receivedMessage(msg)
+        this.socket.on('msgToClient', (msg) => {
+          this.receiveMessage(msg)
         })
       }
     });
