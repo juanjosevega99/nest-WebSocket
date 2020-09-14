@@ -26,7 +26,7 @@ export class AppGateway
     this.logger.log(`Client connected: ${client.id}`);
   }
 
-  @SubscribeMessage('message')
+  @SubscribeMessage('msgToServer')
   handleMessage(client: Socket, text: string): void {
     this.wss.emit('msgToClient', text);
     // return { event: 'msgToClient', data: 'Hello world!' };
